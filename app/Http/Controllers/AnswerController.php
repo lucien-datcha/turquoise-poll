@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
+use Illuminate\Support\Facades\DB;
 
 class AnswerController extends Controller
 {
@@ -12,6 +13,14 @@ class AnswerController extends Controller
         $answers = Answer::all();
 
         return response()->json($answers);
+    }
+
+    public function average()
+    {
+        $avgG = round(Answer::all()->average('g'));
+        $avgB = round(Answer::all()->average('b'));
+
+        return response()->json(['r' => 0, 'g' => $avgG, 'b' => $avgB]);
     }
 
     public function answer(Request $request, $color)

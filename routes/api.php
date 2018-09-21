@@ -15,4 +15,6 @@ use Illuminate\Http\Request;
 
 Route::get('/answer', 'AnswerController@index');
 
+Route::get('/average', 'AnswerController@average');
+
 Route::post('/answer/{color}', 'AnswerController@answer');
